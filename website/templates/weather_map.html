@@ -1,0 +1,33 @@
+{% extends "base.html" %}{% block title %}Sign In{% endblock %}
+
+{% block page_content %}
+    <title>My Weather App</title>
+    <script src="static/weather_map.js"></script>
+
+    <h2>
+        <center>
+            <strong>
+                Tools to Create the Appropriate Irrigation Plan
+            </strong>
+        </center>
+    </h2>
+    <br></br>
+    <div class = "row content d-flex justify-content-center">
+        <div id = "notification">
+            <div class = "current-weather">
+                <div class="card" style="width: 20rem;">
+                <div class="card-body">
+                    <h3 class = "current-location"></h3>
+                    <h5 class="current-weather-degree"></h5>
+                    <h6 class="current-weather-desc"></h6>
+                    <p class="low-temp"></p>
+                    <p class="high-temp"></p>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+{% endblock %}

@@ -1,0 +1,58 @@
+{% extends "base.html "%}{% block title %}Sign Up{% endblock %}
+
+{% block page_content %}
+
+<h2 align = "center">
+    <strong>
+        Create an account to get started
+    </strong>
+</h2>
+<br>
+<form method = "POST">
+    <section>
+        <div class = "row content d-flex justify-content-center">
+            <div class = "col-md-5">
+                <div class = "box shadow-lg bg-light p-4">
+
+                    <form class = "mb-3">
+                        <div class = "form-floating mb-3">
+                            <label>Email Address</label>
+                            <input
+                            type = "email"
+                            class = "form-control"
+                            name = "email"
+                            id = "email"
+                            placeholder = "Enter your email"/>
+                        </div>
+
+                        <div class = "form-floating mb-3">
+                            <label>Password</label>
+                            <input
+                            type = "password"
+                            class = "form-control"
+                            name = "password"
+                            id = "password"
+                            placeholder = "Create a password">
+                        </div>
+
+                        <div class = "form-floating mb-3">
+                            <label>Password Confirmation</label>
+                            <input
+                            type = "password"
+                            class = "form-control"
+                            name = "password2"
+                            id = "password2"
+                            placeholder = "Confirm your password">
+                        </div>
+
+                        <div class = "d-grip gap-2" align = "center">
+                            <button type = "submit" class = "btn btn-primary text-light" style = "background-color: green;">Submit</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+
+{% endblock %}

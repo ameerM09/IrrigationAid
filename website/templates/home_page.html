@@ -1,0 +1,89 @@
+{% extends "base.html" %}{% block title %}Home{% endblock %}
+
+{% block page_content %}
+    <h2>
+        <center>
+            <strong>
+                Creating My Irrigation Plan
+            </strong>
+        </center>
+    </h2>
+<br>
+
+<form method = "POST">
+    <section>
+        <div class = "row content d-flex justify-content-center">
+            <div class = "col-md-6">
+                <div class = "box shadow-lg bg-light p-4">
+                    <form class = "mb-3">
+                        <div class = "form-floating mb-3">
+                            <label>Duration of Watering Sessions</label>
+                            <input
+                            type = "integer"
+                            class = "form-control"
+                            name = "duration_per_session"
+                            id = "duration_per_session"
+                            placeholder = "Enter duration of each water session (minutes)"/>
+                        </div>
+
+                        <div class = "form-floating mb-3">
+                            <label>Watering Sessions Per Day</label>
+                            <input
+                            type = "integer"
+                            class = "form-control"
+                            name = "sessions_per_day"
+                            id = "sessions_per_day"
+                            placeholder = "Enter number of watering sessions per day"/>
+                        </div>
+
+                        <div class = "d-grip gap-2" align = "center">
+                            <button type = "submit" class = "btn text-light" style = "background-color: blue;">Generate My Irrigation Plan!</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+</form>
+<br></br>
+
+{% set days_of_week = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+] %}
+<br></br>
+
+<ul id = "irrigation_plans">
+    {% for irrigation_plan in account.irrigation_plans %}
+        {% for day_of_week in days_of_week %}
+            <div class="card" style="width: 65rem;">
+                <div class="card-body">
+                    <button type = "button" class = "close">
+                        <a href = "/del-account-irrigation-plan/{{ irrigation_plan.id }}">
+                            <span aria-hidden = true>&times;</span>
+                        </a>
+                    </button>
+                <h5 class="card-title">{{ day_of_week }}</h5>
+                <h6 class="card-subtitle mb-2 text-body-secondary">Minutes to Spend Watering Per Session: {{ irrigation_plan.duration_per_session }}</h6>
+                <p class="card-text">Number of Sessions:
+                    {% for num_session_per_day in range(irrigation_plan.num_sessions_per_day) %}
+                        <ul class="list-group" style = "width: 10rem">
+                            <li class="list-group-item">
+                                <input class="form-check-input me-1" type="checkbox">
+                                <label class="form-check-label">Session #: {{ num_session_per_day + 1 }}</label>
+                            </li>
+                        </ul>
+                    {% endfor %}
+                </p>
+                </div>
+            </div>
+        {% endfor %}
+    {% endfor %}
+</ul>
+
+{% endblock %}
